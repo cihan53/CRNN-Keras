@@ -49,13 +49,10 @@ class TextImageGenerator:
         if self.cur_index >= self.n:
             self.cur_index = 0
             random.shuffle(self.indexes)
-        print(self.cur_index)
-        print(self.indexes[self.cur_index])
         return self.imgs[self.indexes[self.cur_index]], self.texts[self.indexes[self.cur_index]]
 
     def next_batch(self):       ## batch size만큼 가져오기
         while True:
-            print(self.max_text_len)
             X_data = np.ones([self.batch_size, self.img_w, self.img_h, 1])     # (bs, 128, 64, 1)
             Y_data = np.ones([self.batch_size, self.max_text_len])             # (bs, 9)
             input_length = np.ones((self.batch_size, 1)) * (self.img_w // self.downsample_factor - 2)  # (bs, 1)
@@ -63,18 +60,11 @@ class TextImageGenerator:
 
             for i in range(self.batch_size):
                 img, text = self.next_sample()
-                print(img)
-
-                # print("-", text, "-")
-                # print("-", text_to_labels(text), "-")
-                # print("-", len(text), "-")
-                #
-                # img2 = img.T
-                # img2 = np.expand_dims(img, -1)
-                # X_data[i] = img2
-                #
-                # Y_data[i] = text_to_labels(text)
-                # label_length[i] = len(text)
+                img = img.T
+                img = np.expand_dims(img, -1)
+                X_data[i] = img
+                Y_data[i] = text_to_labels(text)
+                label_length[i] = len(text)
 
             # dict 형태로 복사
             inputs = {
