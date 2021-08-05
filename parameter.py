@@ -1,4 +1,4 @@
-CHAR_VECTOR = "adefghjknqrstwABCDEFGHIJKLMNOPZ0123456789"
+CHAR_VECTOR = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 "
 
 letters = [letter for letter in CHAR_VECTOR]
 
