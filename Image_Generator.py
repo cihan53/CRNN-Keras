@@ -63,6 +63,9 @@ class TextImageGenerator:
                 img = img.T
                 img = np.expand_dims(img, -1)
                 X_data[i] = img
+                print("-",text,"-")
+                print("-",text_to_labels(text),"-")
+                print("-",len(text),"-")
                 Y_data[i] = text_to_labels(text)
                 label_length[i] = len(text)
 
