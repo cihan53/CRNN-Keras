@@ -49,6 +49,8 @@ class TextImageGenerator:
         if self.cur_index >= self.n:
             self.cur_index = 0
             random.shuffle(self.indexes)
+        print(self.cur_index)
+        print(self.indexes[self.cur_index])
         return self.imgs[self.indexes[self.cur_index]], self.texts[self.indexes[self.cur_index]]
 
     def next_batch(self):       ## batch size만큼 가져오기
