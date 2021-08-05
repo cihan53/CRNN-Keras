@@ -55,6 +55,7 @@ class TextImageGenerator:
 
     def next_batch(self):       ## batch size만큼 가져오기
         while True:
+            print(self.max_text_len)
             X_data = np.ones([self.batch_size, self.img_w, self.img_h, 1])     # (bs, 128, 64, 1)
             Y_data = np.ones([self.batch_size, self.max_text_len])             # (bs, 9)
             input_length = np.ones((self.batch_size, 1)) * (self.img_w // self.downsample_factor - 2)  # (bs, 1)
