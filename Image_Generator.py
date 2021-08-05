@@ -39,6 +39,8 @@ class TextImageGenerator:
             self.imgs[i, :, :] = img
             # self.texts.append(img_file[0:-4])
             self.texts.append(img_file[0:-4].ljust(8, " "))
+            print("Plate ", img_file[0:-4])
+
         print(len(self.texts) == self.n)
         print(self.n, " Image Loading finish...")
 
